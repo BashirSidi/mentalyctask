@@ -1,0 +1,8 @@
+/* 
+  add style universal selector to remove default styles
+  which will select all the component elements
+*/
+* {
+  margin: 0px;
+  padding: 0px;
+}
