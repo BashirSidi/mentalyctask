@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -5,11 +6,20 @@ import Container from '@mui/material/Container';
 import Logo from './assets/logo.png';
 import helpIcon from './assets/help.png';
 import {Button, Typography} from '@mui/material';
+import Upload from './components/Upload';
 
 function App() {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <>
+      <Upload
+        open={open}
+        handleClose={handleClose}
+        handleOpen={handleOpen}
+      />
       <AppBar
         position="static"
         variant="outline"
@@ -114,7 +124,7 @@ function App() {
             marginTop: {xs: "52px", md: "16px"},
             background: "linear-gradient(295.67deg, #DE0D6F 16.23%, #731054 83.77%)"
           }}
-          onClick={() => alert("you clicked me")}
+          onClick={handleOpen}
         >
           <Typography
             sx={{
