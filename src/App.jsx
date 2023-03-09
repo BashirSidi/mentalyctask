@@ -7,6 +7,7 @@ import Logo from './assets/logo.png';
 import helpIcon from './assets/help.png';
 import {Button, Typography} from '@mui/material';
 import Upload from './components/Upload';
+import Progress from './components/Progress';
 
 function App() {
   const [open, setOpen] = useState(false);
@@ -128,16 +129,20 @@ function App() {
         >
           <Typography
             sx={{
+              fontFamily: "Montserrat",
               color: "#ffffff",
               fontStyle: "normal",
               fontWeight: 700,
               fontSize: "16px",
-              lineHeight: "24px"
+              lineHeight: "24px",
+              textTransform: "capitalize",
             }}
           >
             Upload
           </Typography>
         </Button>
+
+        <Progress />
       </Container>
     </>
   );
