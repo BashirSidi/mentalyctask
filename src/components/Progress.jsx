@@ -60,8 +60,8 @@ const progressTableStyles = {
   color: "#000000",
   height: "24px",
   fontSize: "16px",
-  width: "150px",
-  marginRight: {xs: "140px", md: "0px"},
+  width: {xs: "200px", md: "150px"},
+  marginRight: {xs: "0px", md: "0px"},
 };
 
 const progrressTableMobileStyle = {

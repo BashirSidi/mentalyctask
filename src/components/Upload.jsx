@@ -21,7 +21,19 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: {xs: "340px", md: "640px"},
-  height: {xs: "35%", md: "424px"},
+  height: {xs: "47%", sm: "", md: "424px"},
+  '@media(max-width: 300px)' : {
+    height: '50%',
+  },
+  '@media(min-width: 380px)' : {
+    height: '38%',
+  },
+  '@media(min-width: 412px)' : {
+    height: '35%',
+  },
+  '@media(min-width: 600px)' : {
+    height: '424px',
+  },
   bgcolor: 'background.paper',
   border: 'none',
   borderRadius: '16px'
