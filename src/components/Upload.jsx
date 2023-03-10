@@ -54,7 +54,8 @@ const Upload = ({open, handleClose}) => {
   };
 
   const handleUpload = () => {
-    dispatch(uploadClient({
+    if (clientName !== "" && noteType !== "") {
+      dispatch(uploadClient({
       id: new Date().getTime().toString(),
       client: clientName,
       type: noteType,
@@ -63,6 +64,7 @@ const Upload = ({open, handleClose}) => {
     setClientName("");
     setNoteType("");
     handleClose();
+    }
   };
 
   return (
