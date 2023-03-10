@@ -14,7 +14,7 @@
 - Each progress bar update with a fake timer. Different progress bars are independent from each other and their progress processes independently. When a bar reaches 100% it disappears from the list 
 - The design is responsive so it will resize well for different desktop screen sizes and  also have a mobile version 
 
-## My Reasons Why I want to work Mentalyc
+## Why I want to work with Mentalyc
 
 - The company is on its mission to create an AI-based application fully automates note-taking in therapy, while creating a unique, anonymized data set for research of the most effective interventions.
 - The company values
