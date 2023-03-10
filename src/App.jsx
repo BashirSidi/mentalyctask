@@ -8,11 +8,13 @@ import helpIcon from './assets/help.png';
 import {Button, Typography} from '@mui/material';
 import Upload from './components/Upload';
 import Progress from './components/Progress';
+import {useSelector} from 'react-redux';
 
 function App() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const {client} = useSelector((state)=>state.client);
 
   return (
     <>
@@ -41,6 +43,7 @@ function App() {
                 display: {xs: 'none', md: 'flex'},
                 width: "56px",
                 height: "32px",
+                marginTop: "12px",
               }}
               alt="Mentalyc Logo"
               src={Logo}
@@ -53,6 +56,7 @@ function App() {
                 margin: 'auto',
                 width: "42px",
                 height: "24px",
+                marginTop: "26px",
               }}
               alt="Mentalyc Logo"
               src={Logo}
@@ -89,6 +93,7 @@ function App() {
                 display: {xs: 'none', md: 'flex'},
                 width: "24px",
                 height: "24px",
+                cursor: 'pointer',
               }}
               alt="Help icon"
               src={helpIcon}
@@ -142,7 +147,8 @@ function App() {
           </Typography>
         </Button>
 
-        <Progress />
+        {client.length !== 0 ? <Progress /> : null}
+        
       </Container>
     </>
   );

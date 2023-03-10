@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import {
   Container,
   Button,
@@ -12,6 +12,8 @@ import {
 } from '@mui/material';
 import CloseIcon from '../assets/close.png'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useDispatch } from "react-redux";
+import { uploadClient } from '../store/slices/clientSlice';
 
 const style = {
   position: 'absolute',
@@ -19,18 +21,36 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: {xs: "340px", md: "640px"},
-  height: {xs: "240px", md: "424px"},
+  height: {xs: "35%", md: "424px"},
   bgcolor: 'background.paper',
   border: 'none',
   borderRadius: '16px'
 };
 
 const Upload = ({open, handleClose}) => {
-  const [age, setAge] = useState('');
+  const [noteType, setNoteType] = useState('');
+  const [clientName, setClientName] = useState('');
   const [toggleIcon, setToggleIcon] = useState(false);
+  const dispatch = useDispatch();
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  const handleNoteTypeChange = (event) => {
+    setNoteType(event.target.value);
+  };
+
+  const handleClientNameChange = (event) => {
+    setClientName(event.target.value);
+  };
+
+  const handleUpload = () => {
+    dispatch(uploadClient({
+      id: new Date().getTime().toString(),
+      client: clientName,
+      type: noteType,
+      progress: 1,
+    }))
+    setClientName("");
+    setNoteType("");
+    handleClose();
   };
 
   return (
@@ -98,9 +118,9 @@ const Upload = ({open, handleClose}) => {
                       />
                     )}
                     sx={{
-                      marginTop: "20px",
+                      marginTop: {xs: "30px", md: "20px"},
                       background: "#F2F2F2",
-                      height: {xs: "32px", md: "50px"},
+                      height: {xs: "42px", md: "50px"},
                       fontWeight: 400,
                       fontSize: "16px",
                       fontFamily: "Montserrat",
@@ -147,8 +167,8 @@ const Upload = ({open, handleClose}) => {
                     }}
                     onOpen={() => setToggleIcon(true)}
                     onClose={() => setToggleIcon(false)}
-                    value={age}
-                    onChange={handleChange}
+                    value={noteType}
+                    onChange={handleNoteTypeChange}
                     displayEmpty={true}
                     renderValue={value => value?.length ? Array.isArray(value) ? value.join(', ') : value : <Typography sx={{
                       fontWeight: 0,
@@ -169,6 +189,7 @@ const Upload = ({open, handleClose}) => {
                     size="small"
                     sx={{
                       mt: {xs: '12px', md: '60px'},
+                      marginTop: {xs: "30px", md: "70px"},
                       backgroundColor:"#F2F2F2",
                       height: {xs: "15px", md: "30px"},
                       padding: {xs: "0px 10px 22px 10px", md: "6px 24px 16px 24px"},
@@ -183,6 +204,9 @@ const Upload = ({open, handleClose}) => {
                       },
                       label: {color: "blue"},
                     }}
+                    autoComplete='off'
+                    value={clientName}
+                    onChange={handleClientNameChange}
                     placeholder="Enter client name"
                   />
 
@@ -202,9 +226,10 @@ const Upload = ({open, handleClose}) => {
                     mr: "auto",
                     width: {xs: "150px", md: "180px"},
                     borderRadius: "8px",
-                    marginTop: {xs: "14px", md: "80px"},
+                    marginTop: {xs: "44px", md: "75px"},
                     background: "linear-gradient(295.67deg, #DE0D6F 16.23%, #731054 83.77%)"
                   }}
+                  onClick={handleUpload}
                 >
                   <Typography
                     sx={{
